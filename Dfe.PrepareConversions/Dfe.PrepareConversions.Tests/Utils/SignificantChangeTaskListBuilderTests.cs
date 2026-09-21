@@ -47,6 +47,23 @@ public class SignificantChangeTaskListBuilderTests
       Assert.Equal(expectedTasks.Length, section.Tasks.Count);
       Assert.Equal(expectedTasks, section.Tasks.Select(t => t.Key));
    }
+
+   [Fact]
+   public void Build_Orders_sections_in_expected_display_order()
+   {
+      string[] expectedSectionOrder = [
+         "consultation",
+         "Proposed decision and conversion dates",
+         "public-sector-equality-duty",
+         "land-transaction-application-and-planning-permission"
+      ];
+
+      SignificantChangeProjectViewBaseModel project = BuildProject();
+
+      SignificantChangeTaskListViewModel result = SignificantChangeTaskListBuilder.Build(project);
+
+      Assert.Equal(expectedSectionOrder, result.Sections.Select(section => section.Key));
+   }
   
    [Fact]
    public void Build_Includes_public_sector_equality_duty_section_with_matching_task()
@@ -61,6 +78,21 @@ public class SignificantChangeTaskListBuilderTests
       SignificantChangeTaskItemViewModel task = Assert.Single(section.Tasks);
       Assert.Equal("public-sector-equality-duty", task.Key);
       Assert.Equal("Public Sector Equality Duty", task.Title);
+   }
+
+   [Fact]
+   public void Build_Includes_land_transaction_section_with_local_authority_objections_task()
+   {
+      SignificantChangeProjectViewBaseModel project = BuildProject();
+
+      SignificantChangeTaskListViewModel result = SignificantChangeTaskListBuilder.Build(project);
+
+      SignificantChangeTaskSectionViewModel section = Assert.Single(result.Sections, s => s.Key == "land-transaction-application-and-planning-permission");
+      Assert.Equal(4, section.DisplayOrder);
+      Assert.Equal("Land transaction application and planning permission", section.Title);
+      SignificantChangeTaskItemViewModel task = Assert.Single(section.Tasks);
+      Assert.Equal("local-authority-objections", task.Key);
+      Assert.Equal("Local authority objections", task.Title);
    }
 
    [Fact]
@@ -203,12 +235,34 @@ public class SignificantChangeTaskListBuilderTests
       Assert.Equal(expected, result.Sections[0].Tasks[1].Status);
    }
 
+   [Theory]
+   [InlineData(SignificantChangeTaskStatus.NotStarted)]
+   [InlineData(SignificantChangeTaskStatus.InProgress)]
+   [InlineData(SignificantChangeTaskStatus.Completed)]
+   public void Build_Maps_local_authority_objections_status(SignificantChangeTaskStatus status)
+   {
+      SignificantChangeProjectViewBaseModel project = BuildProject(localAuthorityObjectionsStatus: status);
+
+      SignificantChangeTaskListViewModel result = SignificantChangeTaskListBuilder.Build(project);
+
+      TaskListItemViewModel expected = status switch
+      {
+         SignificantChangeTaskStatus.Completed => TaskListItemViewModel.Completed,
+         SignificantChangeTaskStatus.InProgress => TaskListItemViewModel.InProgress,
+         _ => TaskListItemViewModel.NotStarted
+      };
+
+      SignificantChangeTaskSectionViewModel section = Assert.Single(result.Sections, x => x.Key == "land-transaction-application-and-planning-permission");
+      Assert.Equal(expected, section.Tasks[0].Status);
+   }
+
    private static SignificantChangeProjectViewBaseModel BuildProject(
       SignificantChangeTaskStatus stakeholderConsultationStatus = SignificantChangeTaskStatus.NotStarted,
       SignificantChangeTaskStatus religiousBodyConsultationStatus = SignificantChangeTaskStatus.NotStarted,
       SignificantChangeTaskStatus projectDatesStatus = SignificantChangeTaskStatus.NotStarted,
       SignificantChangeTaskStatus consultationDurationStatus = SignificantChangeTaskStatus.NotStarted,
-      SignificantChangeTaskStatus admissionVariationStatus = SignificantChangeTaskStatus.NotStarted)
+      SignificantChangeTaskStatus admissionVariationStatus = SignificantChangeTaskStatus.NotStarted,
+      SignificantChangeTaskStatus localAuthorityObjectionsStatus = SignificantChangeTaskStatus.NotStarted)
    {
       return new SignificantChangeProjectViewBaseModel
       {
@@ -225,7 +279,8 @@ public class SignificantChangeTaskListBuilderTests
          ReligiousBodyConsultationStatus = religiousBodyConsultationStatus,
          ProjectDatesStatus = projectDatesStatus,
          ConsultationDurationStatus = consultationDurationStatus,
-         AdmissionVariationStatus  = admissionVariationStatus
+         AdmissionVariationStatus  = admissionVariationStatus,
+         LocalAuthorityObjectionsStatus = localAuthorityObjectionsStatus
       };
    }
 }
