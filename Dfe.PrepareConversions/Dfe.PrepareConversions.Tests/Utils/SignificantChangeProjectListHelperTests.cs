@@ -19,6 +19,7 @@ public class SignificantChangeProjectListHelperTests
          TrustName = "Trust name",
          TrustUkprn = "12345678",
          TypeOfSignificantChange = "Route A",
+         LocalAuthorityName = "Kent",
          Status = "approved with conditions"
       };
 
@@ -26,6 +27,7 @@ public class SignificantChangeProjectListHelperTests
 
       Assert.Equal("Approved with conditions", viewModel.Status);
       Assert.Equal("green", viewModel.StatusColour);
+      Assert.Equal("Kent", viewModel.LocalAuthorityName);
    }
 
    [Fact]
@@ -85,8 +87,8 @@ public class SignificantChangeProjectListHelperTests
    [Fact]
    public void Build_Maps_project_dates_values_when_dates_are_set()
    {
-      var proposedDecisionDate = new DateTime(2024, 12, 15);
-      var proposedChangeDate = new DateTime(2025, 01, 20);
+      var proposedDecisionDate = new DateTime(2024, 12, 15, 0, 0, 0, DateTimeKind.Utc);
+      var proposedChangeDate = new DateTime(2025, 01, 20, 0, 0, 0, DateTimeKind.Utc);
 
       SignificantChangeProjectResponse response = new()
       {

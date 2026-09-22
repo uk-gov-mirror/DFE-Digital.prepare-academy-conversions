@@ -13,6 +13,7 @@ public class SignificantChangeProjectResponse
    public User AssignedUser { get; set; }
    public required string TypeOfSignificantChange { get; set; }
    public required string Status { get; set; }
+   public required string LocalAuthorityName { get; set; }
    public SignificantChangeStakeholderConsultationResponse StakeholderConsultation { get; set; } = new();
    public SignificantChangeConsultationDurationResponse ConsultationDuration { get; set; } = new();
    public SignificantChangeAdmissionVariationConsultationResponse AdmissionVariationConsultation { get; set;} = new();
