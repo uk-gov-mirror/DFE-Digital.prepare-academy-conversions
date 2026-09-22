@@ -36,7 +36,8 @@ public class SignificantChangeProjectRepositoryTests
          TrustName = "Example Trust",
          TrustUkprn = command.TrustUkprn,
          TypeOfSignificantChange = "Fast track",
-         Status = "Pre decision"
+         Status = "Pre decision",
+         LocalAuthorityName = "Test local authority"
       };
 
       httpClientFactory
@@ -105,7 +106,8 @@ public class SignificantChangeProjectRepositoryTests
                TrustName = "Example Trust",
                TrustUkprn = "10000001",
                TypeOfSignificantChange = "Fast track",
-               Status = "Pre decision"
+               Status = "Pre decision",
+               LocalAuthorityName = "Test local authority"
             }
          },
          Paging = new ApiV2PagingInfo
@@ -183,7 +185,8 @@ public class SignificantChangeProjectRepositoryTests
          TrustName = "Example Trust",
          TrustUkprn = "10000001",
          TypeOfSignificantChange = "Fast track",
-         Status = "Pre decision"
+         Status = "Pre decision",
+         LocalAuthorityName = "Test local authority"
       };
 
       httpClientFactory

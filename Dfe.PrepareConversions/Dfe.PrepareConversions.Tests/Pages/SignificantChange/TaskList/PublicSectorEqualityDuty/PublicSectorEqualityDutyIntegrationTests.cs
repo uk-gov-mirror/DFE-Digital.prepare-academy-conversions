@@ -86,6 +86,7 @@ public class PublicSectorEqualityDutyIntegrationTests(IntegrationTestingWebAppli
          AssignedUser = new User("user-id", "assigned.user@test.local", "Assigned User"),
          TypeOfSignificantChange = "Route A",
          Status = "pre decision",
+         LocalAuthorityName = "Test local authority",
          EqualitiesImpactAssessment = new SignificantChangeEqualitiesImpactAssessmentResponse()
       };
    }

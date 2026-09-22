@@ -184,6 +184,7 @@ public class SignificantChangeTaskListIntegrationTests(IntegrationTestingWebAppl
          AssignedUser = assignedUser,
          TypeOfSignificantChange = route,
          Status = status,
+         LocalAuthorityName = "Test local authority",
          StakeholderConsultation = new SignificantChangeStakeholderConsultationResponse
          {
             Status = stakeholderConsultationStatus,

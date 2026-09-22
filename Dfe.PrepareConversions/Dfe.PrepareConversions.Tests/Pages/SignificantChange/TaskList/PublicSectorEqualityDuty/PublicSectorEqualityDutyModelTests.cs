@@ -139,6 +139,7 @@ public class PublicSectorEqualityDutyModelTests
          TrustUkprn = "12345678",
          TypeOfSignificantChange = "Route A",
          Status = "pre decision",
+         LocalAuthorityName = "Test local authority",
          EqualitiesImpactAssessment = new SignificantChangeEqualitiesImpactAssessmentResponse()
       };
    }

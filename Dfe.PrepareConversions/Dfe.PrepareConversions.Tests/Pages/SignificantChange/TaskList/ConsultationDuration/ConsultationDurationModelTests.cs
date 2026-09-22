@@ -168,6 +168,7 @@ public class ConsultationDurationModelTests
          TrustUkprn = "12345678",
          TypeOfSignificantChange = "Route A",
          Status = "pre decision",
+         LocalAuthorityName = "Test local authority",
          StakeholderConsultation = new SignificantChangeStakeholderConsultationResponse
          {
             TrustConsultedStakeholders = trustConsultedStakeholders

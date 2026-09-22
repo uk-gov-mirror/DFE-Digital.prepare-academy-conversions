@@ -41,6 +41,7 @@ public class SignificantChangeProjectListHelperTests
          TrustName = "Trust name",
          TrustUkprn = "12345678",
          TypeOfSignificantChange = "Route A",
+         LocalAuthorityName = "Test local authority",
          Status = "pre decision",
          StakeholderConsultation = new SignificantChangeStakeholderConsultationResponse
          {
@@ -68,6 +69,7 @@ public class SignificantChangeProjectListHelperTests
          TrustName = "Trust name",
          TrustUkprn = "12345678",
          TypeOfSignificantChange = "Route A",
+         LocalAuthorityName = "Test local authority",
          Status = "pre decision",
          ReligiousBodyConsultation = new SignificantChangeReligiousBodyConsultationResponse
          {
@@ -98,6 +100,7 @@ public class SignificantChangeProjectListHelperTests
          TrustName = "Trust name",
          TrustUkprn = "12345678",
          TypeOfSignificantChange = "Route A",
+         LocalAuthorityName = "Test local authority",
          Status = "pre decision",
          ProjectDates = new SignificantChangeProjectDatesResponse
          {
@@ -125,6 +128,7 @@ public class SignificantChangeProjectListHelperTests
          TrustName = "Trust name",
          TrustUkprn = "12345678",
          TypeOfSignificantChange = "Route A",
+         LocalAuthorityName = "Test local authority",
          Status = "pre decision",
          ProjectDates = null
       };
@@ -176,6 +180,7 @@ public class SignificantChangeProjectListHelperTests
          TrustName = "Trust name",
          TrustUkprn = "12345678",
          TypeOfSignificantChange = "Route A",
+         LocalAuthorityName = "Test local authority",
          Status = "pre decision",
          EqualitiesImpactAssessment = new SignificantChangeEqualitiesImpactAssessmentResponse
          {
@@ -205,6 +210,7 @@ public class SignificantChangeProjectListHelperTests
          TrustName = "Trust name",
          TrustUkprn = "12345678",
          TypeOfSignificantChange = "Route A",
+         LocalAuthorityName = "Test local authority",
          Status = "pre decision",
          AdmissionVariationConsultation = new SignificantChangeAdmissionVariationConsultationResponse
          {
@@ -232,6 +238,7 @@ public class SignificantChangeProjectListHelperTests
          TrustName = "Trust name",
          TrustUkprn = "12345678",
          TypeOfSignificantChange = "Route A",
+         LocalAuthorityName = "Test local authority",
          Status = "pre decision",
          ConsultationDuration = new SignificantChangeConsultationDurationResponse
          {
@@ -259,6 +266,7 @@ public class SignificantChangeProjectListHelperTests
          TrustName = "Trust name",
          TrustUkprn = "12345678",
          TypeOfSignificantChange = "Route A",
+         LocalAuthorityName = "Test local authority",
          Status = "pre decision",
          ConsultationDuration = null
       };

@@ -215,7 +215,8 @@ public class SignificantChangeProjectAssignmentModelTests
          TrustUkprn = "12345678",
          AssignedUser = assignedUser,
          TypeOfSignificantChange = "Route A",
-         Status = "Pre decision"
+         Status = "Pre decision",
+         LocalAuthorityName = "Test local authority"
       };
    }
 }

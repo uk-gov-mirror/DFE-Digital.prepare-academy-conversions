@@ -28,7 +28,8 @@ public abstract class SignificantChangeDecisionTestBase : BaseIntegrationTests
          TrustUkprn = "12345678",
          AssignedUser = new User("user-id", "assigned.user@test.local", "Assigned User"),
          TypeOfSignificantChange = "Route A",
-         Status = "pre decision"
+         Status = "pre decision",
+         LocalAuthorityName = "Test local authority"
       };
 
       _factory.AddGetWithJsonResponse(string.Format(PathFor.GetSignificantChangeProjectById, id), project);

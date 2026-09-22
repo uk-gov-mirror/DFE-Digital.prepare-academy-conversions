@@ -173,6 +173,7 @@ public class AdmissionVariationConsultationModelTests
          TrustUkprn = "12345678",
          TypeOfSignificantChange = "Route A",
          Status = "pre decision",
+         LocalAuthorityName = "Test local authority",
          AdmissionVariationConsultation = new SignificantChangeAdmissionVariationConsultationResponse()
       };
    }

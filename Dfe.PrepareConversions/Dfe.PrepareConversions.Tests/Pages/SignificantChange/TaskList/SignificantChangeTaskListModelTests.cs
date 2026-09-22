@@ -63,7 +63,8 @@ public class SignificantChangeTaskListModelTests
          TrustName = "Example trust",
          TrustUkprn = "12345678",
          TypeOfSignificantChange = route,
-         Status = "pre decision"
+         Status = "pre decision",
+         LocalAuthorityName = "Test local authority"
       };
    }
 }

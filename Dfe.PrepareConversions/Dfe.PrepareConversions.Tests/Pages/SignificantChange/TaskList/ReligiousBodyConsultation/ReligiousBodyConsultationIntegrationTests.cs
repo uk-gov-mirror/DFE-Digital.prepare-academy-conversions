@@ -99,6 +99,7 @@ public class ReligiousBodyConsultationIntegrationTests(IntegrationTestingWebAppl
          AssignedUser = new User("user-id", "assigned.user@test.local", "Assigned User"),
          TypeOfSignificantChange = "Route A",
          Status = "pre decision",
+         LocalAuthorityName = "Test local authority",
          StakeholderConsultation = new SignificantChangeStakeholderConsultationResponse(),
          ReligiousBodyConsultation = new SignificantChangeReligiousBodyConsultationResponse()
       };
