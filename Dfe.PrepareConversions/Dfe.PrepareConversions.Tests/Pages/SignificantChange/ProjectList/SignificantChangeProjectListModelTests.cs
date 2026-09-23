@@ -57,11 +57,12 @@ public class SignificantChangeProjectListModelTests
       sut.Filters.AvailableAssignees.Should().BeEmpty();
       sut.Filters.AvailableRoutes.Should().BeEmpty();
       sut.Filters.AvailableLocalAuthorities.Should().BeEmpty();
+      sut.Filters.AvailableRegions.Should().BeEmpty();
       sut.Projects.Should().BeEmpty();
    }
 
    [Fact]
-   public async Task OnGetAsync_ForwardsSelectedLocalAuthoritiesToRepository()
+   public async Task OnGetAsync_ForwardsSelectedLocalAuthoritiesAndRegionsToRepository()
    {
       ISignificantChangeProjectRepository.SignificantChangeFilterOptions capturedFilterOptions = null;
       Mock<ISignificantChangeProjectRepository> repository = BuildRepository(new SignificantChangeFilterParameters());
@@ -75,12 +76,13 @@ public class SignificantChangeProjectListModelTests
             capturedFilterOptions = options)
          .ReturnsAsync(new ApiResponse<ApiV2Wrapper<IEnumerable<SignificantChangeProjectResponse>>>(HttpStatusCode.OK, null));
 
-      IndexModel sut = BuildPageModel(repository.Object, "Smith, Ste", "?SelectedLocalAuthorities=Kent");
+      IndexModel sut = BuildPageModel(repository.Object, "Smith, Ste", "?SelectedLocalAuthorities=Kent&SelectedRegions=London");
 
       await sut.OnGetAsync();
 
       capturedFilterOptions.Should().NotBeNull();
       capturedFilterOptions.LocalAuthorities.Should().BeEquivalentTo("Kent");
+      capturedFilterOptions.Regions.Should().BeEquivalentTo("London");
    }
 
    private static Mock<ISignificantChangeProjectRepository> BuildRepository(

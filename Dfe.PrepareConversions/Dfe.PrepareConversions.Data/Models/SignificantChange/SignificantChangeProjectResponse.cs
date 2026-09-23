@@ -14,6 +14,7 @@ public class SignificantChangeProjectResponse
    public required string TypeOfSignificantChange { get; set; }
    public required string Status { get; set; }
    public required string LocalAuthorityName { get; set; }
+   public string RegionName { get; set; } = string.Empty;
    public SignificantChangeStakeholderConsultationResponse StakeholderConsultation { get; set; } = new();
    public SignificantChangeConsultationDurationResponse ConsultationDuration { get; set; } = new();
    public SignificantChangeAdmissionVariationConsultationResponse AdmissionVariationConsultation { get; set;} = new();
